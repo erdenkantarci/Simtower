@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>Yükseliş — Gökdelen Simülasyonu</title>
+<meta name="description" content="Kendi gökdeleninizi inşa edin: ofisler, daireler, oteller, asansörler ve binlerce sakin.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="game"></canvas>
+
+<header id="topbar">
+  <div class="brand"><span class="logo">▲</span><span>Yükseliş</span></div>
+  <div class="stat"><label>Bakiye</label><b id="sMoney">₺0</b><small id="sNet"></small></div>
+  <div class="stat wide"><label>Nüfus</label><b id="sPop">0</b><div class="bar"><i id="sStarBar"></i></div><small id="sPopNext"></small></div>
+  <div class="stat"><label>Derece</label><b id="sStars" class="stars"></b></div>
+  <div class="stat clock"><label id="sDay"></label><b><span id="sIcon">☀️</span> <span id="sTime">00:00</span></b></div>
+  <div class="speed" id="speedBtns">
+    <button data-speed="0" title="Duraklat (Boşluk)">⏸</button>
+    <button data-speed="1" title="Hız 1 (tuş 1)">1×</button>
+    <button data-speed="2" title="Hız 2 (tuş 2)">2×</button>
+    <button data-speed="4" title="Hız 4 (tuş 3)">4×</button>
+    <button data-speed="10" title="Hız 10 (tuş 4)">10×</button>
+  </div>
+  <div class="actions">
+    <button id="btnFinance" title="Rapor ve istatistikler">📊</button>
+    <button id="btnSave" title="Kaydet">💾</button>
+    <button id="btnNew" title="Yeni oyun">✨</button>
+    <button id="btnHelp" title="Nasıl oynanır">❔</button>
+  </div>
+</header>
+
+<aside id="toolbar"></aside>
+
+<div id="views">
+  <button data-view="normal" class="active">🏙️ Normal</button>
+  <button data-view="stress">😰 Stres</button>
+  <button data-view="income">💰 Gelir</button>
+  <button data-view="occupancy">🔑 Doluluk</button>
+  <div id="legend" class="hidden"></div>
+</div>
+
+<aside id="info" class="panel hidden"></aside>
+<div id="tooltip" class="hidden"></div>
+<div id="toasts"></div>
+
+<div id="modal-finance" class="modal hidden">
+  <div class="card wide">
+    <div class="mh"><h2>📊 Kule Raporu</h2><button class="x" data-close>✕</button></div>
+    <div class="chartwrap">
+      <div class="legendrow"><span class="dot g"></span>Gelir <span class="dot r"></span>Gider <span class="dot p"></span>Bakiye</div>
+      <canvas id="chart"></canvas>
+    </div>
+    <div id="finStats"></div>
+  </div>
+</div>
+
+<div id="modal-help" class="modal">
+  <div class="card">
+    <div class="hero">
+      <div class="heroLogo">▲</div>
+      <h1>Yükseliş</h1>
+      <p>Boş bir arsadan göğe uzanan bir kule inşa edin. Sakinlerinizi mutlu tutun, asansörleri akıllıca planlayın, 5 yıldıza ulaşın.</p>
+    </div>
+    <ol class="steps">
+      <li><b>🏛️ Lobi</b> ile başlayın: zemin katta yatay sürükleyin. Ziyaretçiler binaya buradan girer.</li>
+      <li><b>💼 Ofis</b> ve <b>🏠 Daire</b> kurun. Her yapı altında taşıyıcı bir yapı ister.</li>
+      <li><b>🛗 Asansör</b>ü dikey sürükleyerek katları bağlayın. Ulaşım yoksa kiracı gelmez!</li>
+      <li>Uzun bekleyen insanlar <b>stres</b> biriktirir. 3 gün mutsuz kalan kiracılar taşınır.</li>
+      <li>Nüfus arttıkça <b>yıldız</b> kazanır, otel, mağaza, sinema ve ekspres asansörü açarsınız.</li>
+    </ol>
+    <div class="keys">
+      <span><kbd>Sürükle</kbd> / <kbd>Sağ tık</kbd> kaydır</span>
+      <span><kbd>Tekerlek</kbd> yakınlaştır</span>
+      <span><kbd>Boşluk</kbd> duraklat</span>
+      <span><kbd>1</kbd>–<kbd>4</kbd> hız</span>
+      <span><kbd>B</kbd> yık</span>
+      <span><kbd>Esc</kbd> incele</span>
+    </div>
+    <button class="cta" data-close>Kuleyi inşa etmeye başla →</button>
+  </div>
+</div>
+
+<script src="js/sim.js"></script>
+<script src="js/render.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
