@@ -12,6 +12,7 @@
   --r: 14px;
 }
 * { box-sizing: border-box; }
+html { color-scheme: dark; }
 html, body { margin: 0; height: 100%; overflow: hidden; background: #0a0e1c; color: var(--txt); font-family: Outfit, system-ui, -apple-system, Segoe UI, sans-serif; }
 canvas#game { position: fixed; inset: 0; display: block; touch-action: none; cursor: grab; }
 button { font: inherit; color: inherit; cursor: pointer; }
@@ -27,7 +28,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 
 /* ---------- üst çubuk ---------- */
 #topbar {
-  position: fixed; top: 12px; left: 12px; right: 12px; height: 62px;
+  position: fixed; top: calc(12px + env(safe-area-inset-top, 0px)); left: 12px; right: 12px; height: 62px;
   border-radius: var(--r); display: flex; align-items: center; gap: 6px; padding: 0 10px; z-index: 5;
 }
 .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; letter-spacing: .3px; padding: 0 10px 0 4px; margin-right: 4px; border-right: 1px solid var(--line); height: 38px; }

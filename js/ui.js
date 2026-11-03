@@ -461,8 +461,9 @@ function setupUI() {
   $('#btnFinance').addEventListener('click', openFinance);
   $('#btnHelp').addEventListener('click', () => $('#modal-help').classList.remove('hidden'));
   $('#btnSave').addEventListener('click', () => { autoSave(); UI.toast('💾 Oyun kaydedildi', 'good'); });
-  $('#btnNew').addEventListener('click', () => {
-    if (!confirm('Yeni oyuna başlansın mı? Mevcut kule silinecek.')) return;
+  $('#btnNew').addEventListener('click', () => $('#modal-new').classList.remove('hidden'));
+  $('#btnConfirmNew').addEventListener('click', () => {
+    $('#modal-new').classList.add('hidden');
     startNewGame(); View.selected = null; renderInfo(); UI.refreshTools(); setSpeed(S.speed);
     Cam.x = WORLD_W * CW / 2; Cam.y = -FH * 3; Cam.z = 1.5;
     autoSave();
